@@ -370,27 +370,24 @@
       nina: "style-nina.css"
     };
 
-    // Celebrant Theme Switcher (temporarily locked to style-elin.css)
-    function setTheme(theme) {
-      const sheet = document.getElementById("themeStylesheet");
-      if (sheet) {
-        sheet.href = "style-elin.css";
-        // To restore dynamic theme switching later, uncomment the lines below and remove `sheet.href = "style-elin.css";`:
-        // if (!themeFiles[theme]) return;
-        // sheet.href = themeFiles[theme];
-      }
+function setTheme(theme) {
+  if (!themeFiles[theme]) return;
+  const sheet = document.getElementById("themeStylesheet");
+  if (sheet) {
+    sheet.href = themeFiles[theme];
+  }
 
-      ["marianne", "elin", "nina"].forEach(name => {
-        const btn = document.getElementById("theme-" + name);
-        if (btn) {
-          btn.classList.toggle("active", name === theme);
-        }
-      });
-
-      try {
-        localStorage.setItem("preferred_theme", theme);
-      } catch (e) {}
+  ["marianne", "elin", "nina"].forEach(name => {
+    const btn = document.getElementById("theme-" + name);
+    if (btn) {
+      btn.classList.toggle("active", name === theme);
     }
+  });
+
+  try {
+    localStorage.setItem("preferred_theme", theme);
+  } catch (e) {}
+}
 
     // Language Switcher
     function setLanguage(lang) {
