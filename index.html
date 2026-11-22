@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Save the date | Birthday Party in Spain 🎈</title>
+  <link rel="canonical" href="https://150.apped.uk/" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎈</text></svg>">
+
+  <!-- Link Preview (Open Graph & Social Sharing) -->
+  <meta property="og:site_name" content="150 Birthday Celebration" />
+  <meta property="og:title" content="🎈 Save the date | Birthday Party in Spain 🎈" />
+  <meta property="og:description" content="Marianne 80 + Elin 50 + Nina 20 = 150! March 20, 2027 in Fuengirola, Málaga." />
+  <meta property="og:image" content="https://150.apped.uk/bg.jpg" />
+  <meta property="og:image:secure_url" content="https://150.apped.uk/bg.jpg" />
+  <meta property="og:image:type" content="image/jpeg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Plaza de Toros in Fuengirola, Málaga" />
+  <meta property="og:url" content="https://150.apped.uk/" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="🎈 Save the date | Birthday Party in Spain 🎈" />
+  <meta name="twitter:description" content="Marianne 80 + Elin 50 + Nina 20 = 150! March 20, 2027 in Fuengirola, Málaga." />
+  <meta name="twitter:image" content="https://150.apped.uk/bg.jpg" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Dynamic Theme Stylesheet (defaulted to style-elin.css) -->
+  <link id="themeStylesheet" rel="stylesheet" href="style-elin.css" />
+
+  <style>
+    /* Ensures "= 150" always sits on its own dedicated row below the three names */
+    .equation-row {
+      flex-direction: column;
+      gap: 0.55rem;
+    }
+
+    .equation-names {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 0.45rem;
+    }
+
+    .equation-total {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      gap: 0.35rem;
+      margin-left: 0;
+    }
+
+    .stay-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem 1.25rem;
+      margin-top: 1.15rem;
+    }
+
+    .stay-links a {
+      color: var(--accent);
+      font-size: 0.88rem;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .stay-links a:hover {
+      text-decoration: underline;
+    }
+
+    /* Extra spacing between the RSVP form card and the next section */
+    .rsvp-section {
+      margin-bottom: 3.5rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOP CONTROLS: LANGUAGE SWITCHER ONLY -->
+  <div class="top-controls">
+    <div class="toggle-group" aria-label="Language Switcher">
+      <button type="button" class="toggle-btn" onclick="setLanguage('en')" id="btn-en">EN</button>
+      <button type="button" class="toggle-btn" onclick="setLanguage('sv')" id="btn-sv">SV</button>
+    </div>
+  </div>
+
+  <!-- HERO BANNER -->
+  <section class="hero-banner">
+    <div class="hero-content">
+      <div class="hero-header">
+        <div class="eyebrow" data-i18n="eyebrow">Join Us To Celebrate</div>
+        <h1 data-i18n="title">Birthday Party</h1>
+      </div>
+      
+      <div class="hero-lower">
+        <div class="subtitle-pill">
+          <div class="theme-hint" data-i18n="themeHint">3 generations of Englund</div>
+          <div class="equation-row" role="group" aria-label="Choose celebrant theme">
+            <div class="equation-names">
+              <button type="button" class="name-chip active" onclick="setTheme('marianne')" id="theme-marianne">Marianne 80</button>
+              <span class="math-symbol">+</span>
+              <button type="button" class="name-chip" onclick="setTheme('elin')" id="theme-elin">Elin 50</button>
+              <span class="math-symbol">+</span>
+              <button type="button" class="name-chip" onclick="setTheme('nina')" id="theme-nina">Nina 20</button>
+            </div>
+            <div class="equation-total">
+              <span class="math-symbol">=</span>
+              <span class="total-number">150</span>
+            </div>
+          </div>
+
+          <p class="subtitle" data-i18n="subtitle">
+            Good food, great wine, music, and even better company. Come raise a glass with us to celebrate!
+          </p>
+        </div>
+
+        <div>
+          <a href="#rsvp" class="btn-rsvp" data-i18n="rsvpBtn">RSVP Now</a>
+        </div>
+
+        <!-- LIVE COUNTDOWN TIMER -->
+        <div class="countdown" id="countdown">
+          <div class="time-box"><span id="days">00</span><small data-i18n="daysLabel">Days</small></div>
+          <div class="time-box"><span id="hours">00</span><small data-i18n="hoursLabel">Hours</small></div>
+          <div class="time-box"><span id="minutes">00</span><small data-i18n="minsLabel">Mins</small></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAIN BODY CONTENT -->
+  <div class="main-body">
+    <div class="container">
+      
+      <!-- EVENT DETAILS CARDS -->
+      <section class="details-grid">
+        <div class="detail-card">
+          <h3 data-i18n="whenTitle">When</h3>
+          <p data-i18n="whenText">Saturday, March 20, 2027<br>7:00 PM – Late</p>
+          <button type="button" onclick="openCalModal()" class="cal-btn-custom">
+            <span data-i18n="calButton">Add to Calendar</span>
+          </button>
+        </div>
+
+        <div class="detail-card">
+          <h3 data-i18n="whereTitle">Where</h3>
+          <p>Plaza de Toros<br>Calle Camino Jose Cela, 12,<br>29640 Fuengirola, Málaga, Spain</p>
+          <a href="https://maps.app.goo.gl/K8UrGWNqYNoXMBYTA" target="_blank" rel="noopener" data-i18n="mapLink">View on Google Maps &rarr;</a>
+        </div>
+
+        <div class="detail-card">
+          <h3 data-i18n="dressTitle">Dress Code</h3>
+          <p data-i18n="dressText">Party Ready<br>Smart &amp; festive</p>
+        </div>
+      </section>
+
+      <!-- RSVP FORM SECTION -->
+      <section class="rsvp-section" id="rsvp">
+        <h2 data-i18n="rsvpHeading">Kindly RSVP</h2>
+        <p data-i18n="rsvpSub">Please let us know if you can make it by March 1st.</p>
+
+        <div class="form-container">
+          <!-- Tally RSVP Embed -->
+          <iframe data-tally-src="https://tally.so/embed/GeR6zo?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" loading="lazy" width="100%" height="520" frameborder="0" marginheight="0" marginwidth="0" title="RSVP"></iframe>
+          <script>var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function(e){e.src=e.dataset.tallySrc}))};if("undefined"!=typeof Tally)v();else if(d.querySelector('script[src="'+w+'"]')==null){var s=d.createElement("script");s.src=w,s.onload=v,s.onerror=v,d.body.appendChild(s);}</script>
+
+          <!-- Hidden Google Form kept for backup -->
+          <div style="display: none;" aria-hidden="true">
+            <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfWsHHlrIJMcwrKOF5sqa4nTRZg33kiGQDb677dF0_gsG2__g/viewform?embedded=true" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+          </div>
+        </div>
+      </section>
+
+      <!-- TRAVEL & STAY SECTION -->
+      <section class="travel-section">
+        <div class="travel-grid">
+          <div class="travel-card">
+            <h2 data-i18n="hotelsHeading">🛎️ Where to Stay</h2>
+            <ul class="travel-list">
+              <li>
+                <strong data-i18n="hotel2Name">Central Fuengirola Hotels &amp; Stays</strong>
+                <p data-i18n="hotel2Desc">A wide selection of boutique hotels, seaside apartments, and holiday homes around Fuengirola within easy reach of the venue.</p>
+                <div class="stay-links">
+                  <a href="https://www.google.com/travel/search?q=fuengirola&gsas=1&ts=CAESCgoCCAMKAggDEAAaNwoZEhcKCS9tLzAyY3I2azoKRnVlbmdpcm9sYRIaEhQKBwjrDxADGBQSBwjrDxADGBUYATICCAI&ved=0CAAQ5JsGahcKEwiQq66wuZaYAxUAAAAAHQAAAAAQBA" target="_blank" rel="noopener" data-i18n="googleHotelsLink">Search Hotels on Google &rarr;</a>
+                  <a href="https://www.airbnb.co.uk/s/Fuengirola--Spain/homes?place_id=ChIJ-_QxNj_icg0RFfCZQyXD4JY&refinement_paths%5B%5D=%2Fhomes&location_bb=QhJb4sCS3hpCEhOKwJRfLg%3D%3D&acp_id=81420e40-9354-419b-92e0-86c509b6f945&date_picker_type=calendar&checkin=2027-03-20&checkout=2027-03-21&adults=2&search_type=autocomplete_click" target="_blank" rel="noopener" data-i18n="airbnbLink">Browse Airbnb in Fuengirola &rarr;</a>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <div class="travel-card">
+            <h2 data-i18n="airlinesHeading">🛫 Getting to Málaga (AGP)</h2>
+            <ul class="travel-list">
+              <li>
+                <strong data-i18n="airlineUKName">From the UK</strong>
+                <p data-i18n="airlineUKDesc">Frequent direct flights from London, Birmingham, and regional airports via British Airways, easyJet, Ryanair, and Jet2.</p>
+                <div class="stay-links">
+                  <a href="https://www.jet2.com/en/cheap-flights/birmingham/malaga?from=2027-03-20&to=2027-03-21&adults=2&children&infants=0&preselect=true" target="_blank" rel="noopener" data-i18n="jet2Link">From Birmingham with Jet2 &rarr;</a>
+                  <a href="https://www.ryanair.com/ie/en/trip/flights/select?adults=2&teens=0&children=0&infants=0&dateOut=2027-03-20&dateIn=2027-03-21&isConnectedFlight=false&discount=0&promoCode=&isReturn=true&originMac=LON&destinationIata=AGP&tpAdults=2&tpTeens=0&tpChildren=0&tpInfants=0&tpStartDate=2027-03-20&tpEndDate=2027-03-21&tpDiscount=0&tpPromoCode=&tpOriginMac=LON&tpDestinationIata=AGP" target="_blank" rel="noopener" data-i18n="ryanairLink">From London with Ryanair &rarr;</a>
+                </div>
+              </li>
+              <li>
+                <strong data-i18n="airlineSVName">From Sweden</strong>
+                <p data-i18n="airlineSVDesc">Regular direct connections from Stockholm (ARN) and Gothenburg (GOT) to Málaga (AGP) operated by SAS, Norwegian, and Ryanair.</p>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- PICTURE GALLERY SECTION -->
+      <section class="gallery-section">
+        <h2 data-i18n="galleryHeading">Photo Gallery</h2>
+        <p data-i18n="gallerySub">We would love for you to join us</p>
+        <div class="gallery-grid">
+          <div class="gallery-item"><img src="photo1.jpg" alt="Party Photo 1" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'200\' height=\'150\' viewBox=\'0 0 200 150\'><rect width=\'200\' height=\'150\' fill=\'%23E8E2D5\'/><text x=\'50%25\' y=\'50%25\' dominant-baseline=\'middle\' text-anchor=\'middle\' fill=\'%235C6460\' font-family=\'sans-serif\' font-size=\'14\'>Photo 1</text></svg>'"></div>
+          <div class="gallery-item"><img src="photo2.jpg" alt="Party Photo 2" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'200\' height=\'150\' viewBox=\'0 0 200 150\'><rect width=\'200\' height=\'150\' fill=\'%23E8E2D5\'/><text x=\'50%25\' y=\'50%25\' dominant-baseline=\'middle\' text-anchor=\'middle\' fill=\'%235C6460\' font-family=\'sans-serif\' font-size=\'14\'>Photo 2</text></svg>'"></div>
+          <div class="gallery-item"><img src="photo3.jpg" alt="Party Photo 3" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'200\' height=\'150\' viewBox=\'0 0 200 150\'><rect width=\'200\' height=\'150\' fill=\'%23E8E2D5\'/><text x=\'50%25\' y=\'50%25\' dominant-baseline=\'middle\' text-anchor=\'middle\' fill=\'%235C6460\' font-family=\'sans-serif\' font-size=\'14\'>Photo 3</text></svg>'"></div>
+        </div>
+      </section>
+
+      <!-- FAQ SECTION -->
+      <section class="faq-section">
+        <h2 data-i18n="faqHeading">Frequently Asked Questions</h2>
+        <details>
+          <summary data-i18n="faq1Q">Are children welcome?</summary>
+          <p data-i18n="faq1A">Unfortunately not this time.</p>
+        </details>
+        <details>
+          <summary data-i18n="faq2Q">Is there parking available?</summary>
+          <p data-i18n="faq2A">Yes, plenty of free parking within Plaza de Toros.</p>
+        </details>
+        <details>
+          <summary data-i18n="faq3Q">Dietary requirements?</summary>
+          <p data-i18n="faq3A">Please let us know of any allergies or dietary restrictions when filling out your RSVP form below.</p>
+        </details>
+      </section>
+
+      <footer>
+        <span data-i18n="footerText">Questions? Reach out directly via WhatsApp or email.</span>
+      </footer>
+
+    </div>
+  </div>
+
+  <!-- CALENDAR POPUP MODAL -->
+  <div id="calModal" class="cal-modal-overlay">
+    <div class="cal-modal-box">
+      <h3 data-i18n="modalTitle">Add to Calendar</h3>
+      <p data-i18n="modalSub">Choose your preferred calendar service:</p>
+      
+      <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=150+Birthday+Celebration&dates=20270320T190000/20270321T020000&details=Marianne+80+%2B+Elin+50+%2B+Nina+20+%3D+150!+Good+food,+great+wine,+music,+and+company.&location=Plaza+de+Toros,+Calle+Camino+Jose+Cela,+12,+29640+Fuengirola,+M%C3%A1laga,+Spain" target="_blank" rel="noopener" class="cal-option-btn" data-i18n="optGoogle">Google Calendar</a>
+      
+      <a href="https://outlook.live.com/calendar/0/action/compose?subject=150+Birthday+Celebration&startdt=2027-03-20T19:00:00&enddt=2027-03-21T02:00:00&body=Marianne+80+%2B+Elin+50+%2B+Nina+20+%3D+150!&location=Plaza+de+Toros,+Fuengirola,+M%C3%A1laga,+Spain" target="_blank" rel="noopener" class="cal-option-btn" data-i18n="optOutlook">Outlook Calendar</a>
+      
+      <a href="data:text/calendar;charset=utf8,BEGIN:VCALENDAR%0AVERSION:2.0%0ABEGIN:VEVENT%0ASUMMARY:150%20Birthday%20Celebration%0ADESCRIPTION:Marianne%2080%20+%20Elin%2050%20+%20Nina%2020%20%3D%20150!%0ALOCATION:Plaza%20de%20Toros%2C%20Fuengirola%2C%20Spain%0ADTSTART:20270320T190000Z%0ADTEND:20270321T020000Z%0AEND:VEVENT%0AEND:VCALENDAR" download="party.ics" class="cal-option-btn" data-i18n="optApple">Apple / iCal (.ics)</a>
+      
+      <button type="button" onclick="closeCalModal()" class="cal-close-btn" data-i18n="closeBtn">Cancel</button>
+    </div>
+  </div>
+
+  <!-- SCRIPT FOR THEME SWITCHING, TRANSLATIONS, COUNTDOWN, AND MODAL -->
+  <script>
+    const translations = {
+      en: {
+        eyebrow: "Join Us To Celebrate",
+        title: "Birthday Party",
+        themeHint: "3 generations of Englund",
+        subtitle: "Good food, great wine, music, and even better company. Come raise a glass with us to celebrate!",
+        rsvpBtn: "RSVP Now",
+        daysLabel: "Days",
+        hoursLabel: "Hours",
+        minsLabel: "Mins",
+        whenTitle: "When",
+        whenText: "Saturday, March 20, 2027<br>7:00 PM – Late",
+        whereTitle: "Where",
+        mapLink: "View on Google Maps &rarr;",
+        dressTitle: "Dress Code",
+        dressText: "Party Ready<br>Smart &amp; festive",
+        calButton: "Add to Calendar",
+        hotelsHeading: "🛎️ Where to Stay",
+        hotel2Name: "Central Fuengirola Hotels & Stays",
+        hotel2Desc: "A wide selection of boutique hotels, seaside apartments, and holiday homes around Fuengirola within easy reach of the venue.",
+        googleHotelsLink: "Search Hotels on Google &rarr;",
+        airbnbLink: "Browse Airbnb in Fuengirola &rarr;",
+        airlinesHeading: "🛫 Getting to Málaga (AGP)",
+        airlineUKName: "From the UK",
+        airlineUKDesc: "Frequent direct flights from London, Birmingham, and regional airports via British Airways, easyJet, Ryanair, and Jet2.",
+        jet2Link: "From Birmingham with Jet2 &rarr;",
+        ryanairLink: "From London with Ryanair &rarr;",
+        airlineSVName: "From Sweden",
+        airlineSVDesc: "Regular direct connections from Stockholm (ARN) and Gothenburg (GOT) to Málaga (AGP) operated by SAS, Norwegian, and Ryanair.",
+        galleryHeading: "Photo Gallery",
+        gallerySub: "We would love for you to join us",
+        faqHeading: "Frequently Asked Questions",
+        faq1Q: "Are children welcome?",
+        faq1A: "Unfortunately not this time.",
+        faq2Q: "Is there parking available?",
+        faq2A: "Yes, plenty of free parking within Plaza de Toros.",
+        faq3Q: "Dietary requirements?",
+        faq3A: "Please let us know of any allergies or dietary restrictions when filling out your RSVP form below.",
+        rsvpHeading: "Kindly RSVP",
+        rsvpSub: "Please let us know if you can make it by March 1st.",
+        footerText: "Questions? Reach out directly via WhatsApp or email.",
+        modalTitle: "Add to Calendar",
+        modalSub: "Choose your preferred calendar service:",
+        optGoogle: "Google Calendar",
+        optOutlook: "Outlook Calendar",
+        optApple: "Apple / iCal (.ics)",
+        closeBtn: "Cancel"
+      },
+      sv: {
+        eyebrow: "Välkommen att fira med oss",
+        title: "Födelsedagsfest",
+        themeHint: "3 generationer Englund",
+        subtitle: "God mat, gott vin, musik och fantastiskt sällskap. Kom och skåla med oss!",
+        rsvpBtn: "OSA Här",
+        daysLabel: "Dagar",
+        hoursLabel: "Timmar",
+        minsLabel: "Min",
+        whenTitle: "När",
+        whenText: "Lördag 20 mars 2027<br>Kl. 19:00 – Sent",
+        whereTitle: "Var",
+        mapLink: "Visa på Google Maps &rarr;",
+        dressTitle: "Klädsel",
+        dressText: "Feststämning<br>Vårdad festklädsel",
+        calButton: "Lägg till i kalender",
+        hotelsHeading: "🛎️ Boende",
+        hotel2Name: "Hotell & Boenden i Fuengirola",
+        hotel2Desc: "Ett brett utbud av charmiga hotell, strandnära lägenheter och semesterboenden i Fuengirola på smidigt avstånd från lokalen.",
+        googleHotelsLink: "Sök hotell på Google &rarr;",
+        airbnbLink: "Se Airbnb i Fuengirola &rarr;",
+        airlinesHeading: "🛫 Resa till Málaga (AGP)",
+        airlineUKName: "Från Storbritannien",
+        airlineUKDesc: "Många dagliga direktflyg från London, Birmingham och regionala flygplatser med British Airways, easyJet, Ryanair och Jet2.",
+        jet2Link: "Från Birmingham med Jet2 &rarr;",
+        ryanairLink: "Från London med Ryanair &rarr;",
+        airlineSVName: "Från Sverige",
+        airlineSVDesc: "Regelbundna direktförbindelser från Stockholm (ARN) och Göteborg (GOT) till Málaga (AGP) med SAS, Norwegian och Ryanair.",
+        galleryHeading: "Fotomotiv & Minnen",
+        gallerySub: "Vi skulle älska om du vill komma och fira med oss",
+        faqHeading: "Vanliga Frågor",
+        faq1Q: "Är barn välkomna?",
+        faq1A: "Tyvärr inte den här gången.",
+        faq2Q: "Finns det parkering?",
+        faq2A: "Ja, det finns gott om gratis parkering inne vid Plaza de Toros.",
+        faq3Q: "Specialkost?",
+        faq3A: "Meddela oss eventuella allergier eller specialkost när du fyller i OSA-formuläret nedan.",
+        rsvpHeading: "Vänligen OSA",
+        rsvpSub: "Meddela oss om du kan komma senast den 1 januari.",
+        footerText: "Frågor? Kontakta oss direkt via WhatsApp eller e-post.",
+        modalTitle: "Lägg till i kalender",
+        modalSub: "Välj din kalendertjänst:",
+        optGoogle: "Google Kalender",
+        optOutlook: "Outlook Kalender",
+        optApple: "Apple / iCal (.ics)",
+        closeBtn: "Avbryt"
+      }
+    };
+
+    const themeFiles = {
+      marianne: "style-marianne.css",
+      elin: "style-elin.css",
+      nina: "style-nina.css"
+    };
+
+    // Celebrant Theme Switcher (temporarily locked to style-elin.css)
+    function setTheme(theme) {
+      const sheet = document.getElementById("themeStylesheet");
+      if (sheet) {
+        sheet.href = "style-elin.css";
+        // To restore dynamic theme switching later, uncomment the lines below and remove `sheet.href = "style-elin.css";`:
+        // if (!themeFiles[theme]) return;
+        // sheet.href = themeFiles[theme];
+      }
+
+      ["marianne", "elin", "nina"].forEach(name => {
+        const btn = document.getElementById("theme-" + name);
+        if (btn) {
+          btn.classList.toggle("active", name === theme);
+        }
+      });
+
+      try {
+        localStorage.setItem("preferred_theme", theme);
+      } catch (e) {}
+    }
+
+    // Language Switcher
+    function setLanguage(lang) {
+      const targetLang = lang === "sv" ? "sv" : "en";
+      const dict = translations[targetLang];
+
+      document.documentElement.lang = targetLang;
+
+      document.querySelectorAll("[data-i18n]").forEach(el => {
+        try {
+          const key = el.getAttribute("data-i18n");
+          if (key && dict && Object.prototype.hasOwnProperty.call(dict, key)) {
+            el.innerHTML = dict[key];
+          }
+        } catch (e) {}
+      });
+
+      const btnEn = document.getElementById("btn-en");
+      const btnSv = document.getElementById("btn-sv");
+      if (btnEn) btnEn.classList.toggle("active", targetLang === "en");
+      if (btnSv) btnSv.classList.toggle("active", targetLang === "sv");
+
+      try {
+        localStorage.setItem("preferred_lang", targetLang);
+      } catch (e) {}
+    }
+
+    // Modal Controls
+    function openCalModal() {
+      const modal = document.getElementById("calModal");
+      if (modal) modal.style.display = "flex";
+    }
+
+    function closeCalModal() {
+      const modal = document.getElementById("calModal");
+      if (modal) modal.style.display = "none";
+    }
+
+    window.addEventListener("click", function(event) {
+      const modal = document.getElementById("calModal");
+      if (modal && event.target === modal) {
+        modal.style.display = "none";
+      }
+    });
+
+    // Restore Saved Preferences & Auto-detect Browser Language
+    document.addEventListener("DOMContentLoaded", () => {
+      let savedTheme = null;
+      let savedLang = null;
+
+      try {
+        savedTheme = localStorage.getItem("preferred_theme");
+        savedLang = localStorage.getItem("preferred_lang");
+      } catch (e) {}
+
+      if (savedTheme && themeFiles[savedTheme]) {
+        setTheme(savedTheme);
+      } else {
+        setTheme("elin");
+      }
+
+      if (savedLang === "sv" || savedLang === "en") {
+        setLanguage(savedLang);
+      } else {
+        const browserLang = (navigator.language || navigator.userLanguage || "").toLowerCase();
+        setLanguage(browserLang.startsWith("sv") ? "sv" : "en");
+      }
+    });
+
+    // Countdown Timer
+    const partyDate = new Date("2027-03-20T19:00:00").getTime();
+    const timer = setInterval(function() {
+      const now = new Date().getTime();
+      const distance = partyDate - now;
+      const countdownEl = document.getElementById("countdown");
+      if (!countdownEl) return;
+
+      if (distance < 0) {
+        clearInterval(timer);
+        countdownEl.innerHTML = "<p><strong>The party has started! / Festen har börjat!</strong></p>";
+        return;
+      }
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+
+      const daysEl = document.getElementById("days");
+      const hoursEl = document.getElementById("hours");
+      const minsEl = document.getElementById("minutes");
+
+      if (daysEl) daysEl.innerText = String(days).padStart(2, '0');
+      if (hoursEl) hoursEl.innerText = String(hours).padStart(2, '0');
+      if (minsEl) minsEl.innerText = String(minutes).padStart(2, '0');
+    }, 1000);
+  </script>
+
+</body>
+</html>
